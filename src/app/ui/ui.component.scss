@@ -34,10 +34,13 @@
 }
 
 .btn {
-  
+
   background: transparent;
   border: none;
   margin-left: 60px;
+  float: right;
+  position: relative;
+  top: 16px;
   cursor: pointer;
   img {
     width: 10px;
