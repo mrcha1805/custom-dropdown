@@ -1,0 +1,79 @@
+<div class="content-container">
+  <mat-form-field>
+    <mat-label>Preffered currency</mat-label>
+    <select matNativeControl [(ngModel)]="selected">
+
+      <option *ngFor="let currency of currencies" [value]="currency.value">
+        {{currency.text}}
+      </option>
+
+    </select>
+  </mat-form-field>
+  <p>
+    Selected Value: {{selected}}
+  </p>
+</div>
+<!-- <div class="second-content">
+  <button (click)="mySelect.open()">Open</button>
+  <button (click)="mySelect.toggle()">Toggle</button>
+  <button (click)="mySelect.close()">Close</button>
+
+  <mat-form-field>
+    <mat-label>Select Color</mat-label>
+    <mat-select #mySelect [(value)]="selected" panelClass="my-panel-{{selected}}">
+      <mat-option value="yellow">Yellow</mat-option>
+      <mat-option value="black">Black</mat-option>
+      <mat-option value="red">Red</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="third-content">
+  <mat-form-field>
+    <mat-label>Preffered currency</mat-label>
+
+    <mat-select [(value)]="selected" multiple>
+      <mat-option *ngFor="let currency of currencies" [value]="currency.value">{{currency.text}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="fourth-content">
+  <mat-form-field>
+    <mat-label>Select User</mat-label>
+    <mat-select [(value)]="selected" multiple>
+
+      <mat-option *ngFor="let user of collection" [value]="user.id">
+        {{user.name}}, {{user.email}}
+        <mat-select [(value)]="user.address.zipcode" multiple>
+        </mat-select>
+      </mat-option>
+
+    </mat-select>
+
+  </mat-form-field>
+</div> -->
+
+<div class="content-master">
+  <mat-checkbox (change)="selectAll(allComplete)" style="margin-right: 30px;">select all</mat-checkbox>
+
+  <mat-form-field>
+
+    <mat-label>Select option</mat-label>
+    <mat-select [(value)]="selected" multiple>
+      <input type="text" placeholder="Search" class="input-content">
+      <mat-optgroup class="content-group" *ngFor="let data of dataMaster">
+        <mat-checkbox [indeterminate]="false" [checked]="allComplete">{{data.label}}
+        </mat-checkbox>
+        <button class="btn" (click)="iconDropdown(this.openOption)"><img [src]="iconSrc"></button>
+
+        <mat-option [ngStyle]="{ display : openOption? 'none':null }" style="padding-left: 50px;"
+          *ngFor="let item of data.subLevel" [value]="item">
+          {{item.label}}
+        </mat-option>
+      </mat-optgroup>
+
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="content-checkbox">
+
+</div>
