@@ -10,11 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { UiComponent } from './ui/ui.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { DropdownCustomComponent } from './dropdown-custom/dropdown-custom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UiComponent
+    UiComponent,
+    DropdownCustomComponent
   ],
   imports: [
     BrowserModule,

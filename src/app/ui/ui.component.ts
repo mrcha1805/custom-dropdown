@@ -1,5 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 interface Datas {
   member: string[]
@@ -14,10 +18,12 @@ interface Datas {
   templateUrl: './ui.component.html',
   styleUrls: ['./ui.component.scss']
 })
-export class UiComponent implements OnInit {
+export class UiComponent implements OnInit, OnChanges {
 
   constructor( ) { }
   selected: string | undefined;
+  selectFilters: any;
+  virtualData: any;
   data!: Datas[];
   currencies = [
     { value: 'us', text: 'U.S. Dollar $' },
@@ -264,15 +270,16 @@ export class UiComponent implements OnInit {
       "member": [
         "affinityLevelMaster"
       ],
-      "selected": false,
+      "selected": true,
       "label": "Automotive567",
       "value": "AllFilters.automotive",
+      "subCount": 6,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": true,
           "label": "Auto repair890",
           "value": "AllFilters.automotiveAutoRepair"
         },
@@ -280,7 +287,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Budget car",
           "value": "AllFilters.automotiveBudgetCar"
         },
@@ -288,7 +295,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Luxury cars",
           "value": "AllFilters.automotiveLuxuryCars"
         },
@@ -296,7 +303,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Motorcycles",
           "value": "AllFilters.automotiveMotorcycles"
         },
@@ -304,7 +311,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Off-road vehicles",
           "value": "AllFilters.automotiveOffRoadVehicles"
         },
@@ -312,7 +319,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Automotive - Others",
           "value": "AllFilters.automotiveAutomotiveOthers"
         }
@@ -325,12 +332,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Books and Literature",
       "value": "AllFilters.booksAndLiterature",
+      "subCount": 4,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Children's tips",
           "value": "AllFilters.booksAndLiteratureChildrenSTips"
         },
@@ -338,7 +346,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Healthy books",
           "value": "AllFilters.booksAndLiteratureHealthyBooks"
         },
@@ -346,7 +354,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Magazine",
           "value": "AllFilters.booksAndLiteratureMagazine"
         },
@@ -354,7 +362,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Books and Literature - Others",
           "value": "AllFilters.booksAndLiteratureBooksAndLiteratureOthers"
         }
@@ -367,12 +375,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Business and Finance",
       "value": "AllFilters.businessAndFinance",
+      "subCount": 3,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Construction industry",
           "value": "AllFilters.businessAndFinanceConstructionIndustry"
         },
@@ -380,7 +389,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Home appliance industry",
           "value": "AllFilters.businessAndFinanceHomeApplianceIndustry"
         },
@@ -388,7 +397,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Business and Finance - Others",
           "value": "AllFilters.businessAndFinanceBusinessAndFinanceOthers"
         }
@@ -401,12 +410,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Entertainment",
       "value": "AllFilters.entertainment",
+      "subCount": 4 ,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Movies",
           "value": "AllFilters.entertainmentMovies"
         },
@@ -414,7 +424,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Music and Audio",
           "value": "AllFilters.entertainmentMusicAndAudio"
         },
@@ -422,7 +432,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "News and Politics",
           "value": "AllFilters.entertainmentNewsAndPolitics"
         },
@@ -430,7 +440,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Video gaming",
           "value": "AllFilters.entertainmentVideoGaming"
         }
@@ -443,12 +453,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Events and Attractions",
       "value": "AllFilters.eventsAndAttractions",
+      "subCount": 2,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Amusement and Theme parks",
           "value": "AllFilters.eventsAndAttractionsAmusementAndThemeParks"
         },
@@ -456,7 +467,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Events and Attractions - Others",
           "value": "AllFilters.eventsAndAttractionsEventsAndAttractionsOthers"
         }
@@ -469,12 +480,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Food and Drink",
       "value": "AllFilters.foodAndDrink",
+      "subCount": 4,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Cooking",
           "value": "AllFilters.foodAndDrinkCooking"
         },
@@ -482,7 +494,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Dining out",
           "value": "AllFilters.foodAndDrinkDiningOut"
         },
@@ -490,7 +502,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Food delivery",
           "value": "AllFilters.foodAndDrinkFoodDelivery"
         },
@@ -498,7 +510,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Food & Drink - Others",
           "value": "AllFilters.foodAndDrinkFoodDrinkOthers"
         }
@@ -511,12 +523,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Healthy living",
       "value": "AllFilters.healthyLiving",
+      "subCount": 3,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Fitness and Exercise",
           "value": "AllFilters.healthyLivingFitnessAndExercise"
         },
@@ -524,7 +537,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Wellness",
           "value": "AllFilters.healthyLivingWellness"
         },
@@ -532,7 +545,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Healthy living - Others",
           "value": "AllFilters.healthyLivingHealthyLivingOthers"
         }
@@ -545,12 +558,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Hobbies & Interests",
       "value": "AllFilters.hobbiesInterests",
+      "subCount": 4,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Arts and Crafts",
           "value": "AllFilters.hobbiesInterestsArtsAndCrafts"
         },
@@ -558,7 +572,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Games and Puzzles",
           "value": "AllFilters.hobbiesInterestsGamesAndPuzzles"
         },
@@ -566,7 +580,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Pet",
           "value": "AllFilters.hobbiesInterestsPet"
           
@@ -575,7 +589,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Hobbies & interests - others",
           "value": "AllFilters.hobbiesInterestsHobbiesInterestsOthers"
         }
@@ -588,12 +602,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Real estate",
       "value": "AllFilters.realEstate",
+      "subCount": 2,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Real estate buying and selling",
           "value": "AllFilters.realEstateRealEstateBuyingAndSelling"
         },
@@ -601,7 +616,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Real estate - Others",
           "value": "AllFilters.realEstateRealEstateOthers"
         }
@@ -614,12 +629,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Shopping",
       "value": "AllFilters.shopping",
+      "subCount": 6,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Electronic",
           "value": "AllFilters.shoppingElectronic"
         },
@@ -627,7 +643,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Grocery shopping",
           "value": "AllFilters.shoppingGroceryShopping"
         },
@@ -635,7 +651,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Home deceration",
           "value": "AllFilters.shoppingHomeDeceration"
         },
@@ -643,7 +659,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Home decoration",
           "value": "AllFilters.shoppingHomeDecoration"
         },
@@ -651,7 +667,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Shopping - kids",
           "value": "AllFilters.shoppingShoppingKids"
         },
@@ -659,7 +675,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Shopping - others",
           "value": "AllFilters.shoppingShoppingOthers"
         }
@@ -672,12 +688,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Sports",
       "value": "AllFilters.sports",
+      "subCount": 3,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Football",
           "value": "AllFilters.sportsFootball"
         },
@@ -685,7 +702,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Sports - Others",
           "value": "AllFilters.sportsSportsOthers"
         },
@@ -693,7 +710,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Track and Field",
           "value": "AllFilters.sportsTrackAndField"
         }
@@ -706,12 +723,13 @@ export class UiComponent implements OnInit {
       "selected": false,
       "label": "Style & Fashion",
       "value": "AllFilters.styleFashion",
+      "subCount": 1,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Style & Fashion - Others",
           "value": "AllFilters.styleFashionStyleFashionOthers"
         }
@@ -724,12 +742,13 @@ export class UiComponent implements OnInit {
        "selected": false,
       "label": "Travel",
       "value": "AllFilters.travel",
+      "subCount": 22,
       "subLevel": [
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Air",
           "value": "AllFilters.travelAir"
         },
@@ -737,7 +756,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Bed & Breakfasts",
           "value": "AllFilters.travelBedBreakfasts"
         },
@@ -745,7 +764,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Budget travel",
           "value": "AllFilters.travelBudgetTravel"
         },
@@ -753,7 +772,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Business travel",
           "value": "AllFilters.travelBusinessTravel"
         },
@@ -761,7 +780,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Car rental",
           "value": "AllFilters.travelCarRental"
         },
@@ -769,7 +788,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Family travel",
           "value": "AllFilters.travelFamilyTravel"
         },
@@ -777,7 +796,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Hotels and Motels",
           "value": "AllFilters.travelHotelsAndMotels"
         },
@@ -785,7 +804,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Rail travel",
           "value": "AllFilters.travelRailTravel"
         },
@@ -793,7 +812,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Remittance",
           "value": "AllFilters.travelRemittance"
         },
@@ -801,7 +820,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Road trips",
           "value": "AllFilters.travelRoadTrips"
         },
@@ -809,7 +828,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Accessories",
           "value": "AllFilters.travelTravelAccessories"
         },
@@ -817,7 +836,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel China",
           "value": "AllFilters.travelTravelChina"
         },
@@ -825,7 +844,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Hong kong",
           "value": "AllFilters.travelTravelHongKong"
         },
@@ -833,7 +852,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Japan",
           "value": "AllFilters.travelTravelJapan"
         },
@@ -841,7 +860,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Korea",
           "value": "AllFilters.travelTravelKorea"
         },
@@ -849,7 +868,7 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Malaysia",
           "value": "AllFilters.travelTravelMalaysia"
         },
@@ -857,49 +876,53 @@ export class UiComponent implements OnInit {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Singapore",
-          "value": "AllFilters.travelTravelPlanning"
-        },
-        {
-          "member": [
-            "affinityLevelSub"
-          ],
-		  "selected": false,
-          "label": "Travel Switzerland",
           "value": "AllFilters.travelTravelSingapore"
         },
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
+          "label": "Travel Switzerland",
+		  "value": "AllFilters.travelTravelSwitzerland"
+          
+        },
+        {
+          "member": [
+            "affinityLevelSub"
+          ],
+		      "selected": false,
           "label": "Travel UK",
-          "value": "AllFilters.travelTravelSwitzerland"
+		  "value": "AllFilters.travelTravelUk"
+
         },
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel USA",
-          "value": "AllFilters.travelTravelUk"
+		  "value": "AllFilters.travelTravelUsa"
+
         },
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel - Others",
-          "value": "AllFilters.travelTravelUsa"
+		  "value": "AllFilters.travelTravelOthers"
+          
         },
         {
           "member": [
             "affinityLevelSub"
           ],
-		  "selected": false,
+		      "selected": false,
           "label": "Travel Planning",
-          "value": "AllFilters.travelTravelOthers"
+		  "value": "AllFilters.travelTravelPlanning"
         }
       ]
     }
@@ -912,13 +935,17 @@ export class UiComponent implements OnInit {
   iconSrc ="";
   i = 0;
   allComplete: boolean = false;
+  checkedAll: boolean = false;
   OpenSel() {
     this.mySelect.open()
   }
   ngOnInit(): void {
+    //this.selectFilters = ['AllFilters.automotiveBudgetCar'];
+    this.selectFilters = [];
+    this.allComplete = true;
     this.openOption = false;
     this.iconDropdown(false)
-this.selectAll(true);
+    this.selectAll(this.allComplete);
   }
 
   onClickOption(){
@@ -934,19 +961,90 @@ this.selectAll(true);
     
     this.openOption = ! this.openOption;
   }
-
-  selectAll(completed: boolean){
-    this.allComplete = !completed;
-
-    if(this.dataMaster == null) {
-      return;
-    }
-    this.dataMaster.forEach(sub=> {
-      sub.subLevel.forEach(i=>{
-        i.selected = completed;
-      })
-    })
+  updateCheckbox(){
+    console.log('update checkbox');
   }
+
+  selectionChangeDropdown(value: any){
+    console.log('selectionChangeDropdown')
+    console.log('event: '+ JSON.stringify(value));
+    console.log('--> '+ this.selectFilters)
+  }
+  selectionChangeEvent(event: any) {
+    console.log('selection Chnage Event');
+  }
+
+  checkboxSelect() {
+    console.log('checkbox select: ');
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges--> '+changes);
+  }
+  selectAll(all: boolean){
+
+    console.log('select function ' + all)
+    this.allComplete = all;
+    let tempData: any;
+    if(all) {
+      this.dataMaster.forEach(sub => {
+        //this.selectFilters.push(sub.value);
+        sub.selected = true;
+
+        //virtual data 
+
+        if(sub.subLevel.length > 0){
+          sub.subLevel.forEach(item => {
+            //this.selectFilters.push(item.value);
+          });
+        }
+   
+      });
+      console.log('dataMaster : '+ JSON.stringify(this.dataMaster))
+      console.log('filter: ' + JSON.stringify(this.selectFilters));
+    }else {
+      this.selectFilters = [];
+      this.dataMaster.forEach(sub => {
+        sub.selected = false;
+      })
+      console.log('dataMaster : '+ JSON.stringify(this.dataMaster));
+      console.log('filter: ' + JSON.stringify(this.selectFilters));
+    }
+  
+   
+    // this.allComplete = !completed;
+
+    // if(this.dataMaster == null) {
+    //   return;
+    // }
+    // this.dataMaster.forEach(sub=> {
+    //   sub.subLevel.forEach(i=>{
+    //     i.selected = completed;
+    //   })
+    // })
+  }
+
+  selectedFoods = ['pizza-1', 'steak-0'];
+  
+  allfoods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+    {value: 'pasta-3', viewValue: 'Pasta'}
+  ];
+
+  selectedValue: string | undefined;
+
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+
+ 
+
 
 
 }
