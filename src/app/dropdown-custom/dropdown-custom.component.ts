@@ -28,6 +28,7 @@ export interface Data {
 export class DropdownCustomComponent implements OnInit {
   dropdownIconSrc ="../assets/ui/down.png";
   openOption = true;
+  selectItemAll = false;
   task: Task = {
     name: 'Indeterminate',
     completed: false,
@@ -744,6 +745,7 @@ export class DropdownCustomComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.selectItemAll = false;
   }
 
   updateAllComplete(task: Data, header: Data) {
@@ -778,7 +780,7 @@ export class DropdownCustomComponent implements OnInit {
     // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 
-  setAll(select: boolean, header:Data) {
+  setAllItem(select: boolean, header:Data) {
     console.log('setAll');
     this.dataMaster.find(element=> {
       if(element.label === header.label) {
@@ -786,11 +788,22 @@ export class DropdownCustomComponent implements OnInit {
       }
 
     })
-    // this.allComplete = completed;
-    // if (this.task.subtasks == null) {
-    //   return;
-    // }
-    // this.task.subtasks.forEach(t => t.completed = completed);
+
+  }
+  selectAll(event: boolean){
+  
+    this.selectItemAll = event;
+    console.log(event);
+    console.log(this.selectItemAll);
+    this.dataMaster.forEach(data=> {
+      data.selected = this.selectItemAll;
+      if(!this.selectItemAll) {
+        data.indeterminate = false;
+      }
+      data.subLevel?.forEach(sub=> {
+        sub.selected = this.selectItemAll;
+      })
+    })
   }
 
   iconDropdown(open: boolean, header:Data){

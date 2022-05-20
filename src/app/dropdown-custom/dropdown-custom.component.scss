@@ -1,5 +1,6 @@
 .example-section {
   margin: 12px 0;
+  width: 80%;
 }
 
 .example-margin {
@@ -24,6 +25,7 @@ ul {
     width: 10px;
     height: 8.33px;
   }
+
 }
 .example-list-section{
 
@@ -47,7 +49,7 @@ ul {
   background: #FFFFFF;
   border: none;
   height: 30px;
-  width: 190px;
+  width: 70%;
   cursor: pointer;
   img {
     float: right;
@@ -55,11 +57,12 @@ ul {
     width: 10.74px;
     top: 4px;
   }
+  margin-right: 20px;
 }
 
 .dropdown-content {
   // position: absolute;
-  width: 220px;
+  width: 70%;
   // height: 20px;
   // background: #FFFFFF;
 }
