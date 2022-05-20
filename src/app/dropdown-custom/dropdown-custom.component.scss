@@ -26,7 +26,7 @@ ul {
   }
 }
 .example-list-section{
- 
+
   width: 100%;
   height: 20px;
   background: orange;
@@ -41,4 +41,25 @@ ul {
   justify-content: center;
   align-items:baseline;
   background: #F2EEE1;
+}
+
+.dropdown-btn {
+  background: #FFFFFF;
+  border: none;
+  height: 30px;
+  width: 190px;
+  cursor: pointer;
+  img {
+    float: right;
+    height: 6.45px;
+    width: 10.74px;
+    top: 4px;
+  }
+}
+
+.dropdown-content {
+  // position: absolute;
+  width: 220px;
+  // height: 20px;
+  // background: #FFFFFF;
 }

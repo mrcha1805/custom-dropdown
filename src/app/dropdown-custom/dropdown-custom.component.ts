@@ -25,7 +25,8 @@ export interface Data {
   styleUrls: ['./dropdown-custom.component.scss']
 })
 export class DropdownCustomComponent implements OnInit {
-  
+  dropdownIconSrc ="../assets/ui/down.png";
+  openOption = true;
   task: Task = {
     name: 'Indeterminate',
     completed: false,
@@ -379,7 +380,7 @@ export class DropdownCustomComponent implements OnInit {
 		      "selected": false,
           "label": "Pet",
           "value": "AllFilters.hobbiesInterestsPet"
-          
+
         },
         {
           "member": [
@@ -698,7 +699,7 @@ export class DropdownCustomComponent implements OnInit {
 		      "selected": false,
           "label": "Travel Switzerland",
 		      "value": "AllFilters.travelTravelSwitzerland"
-          
+
         },
         {
           "member": [
@@ -725,7 +726,7 @@ export class DropdownCustomComponent implements OnInit {
 		      "selected": false,
           "label": "Travel - Others",
 		      "value": "AllFilters.travelTravelOthers"
-          
+
         },
         {
           "member": [
@@ -800,11 +801,18 @@ export class DropdownCustomComponent implements OnInit {
         }else {
           element.iconSrc = "../assets/ui/up.png";
         }
-      
+
       }
 
     })
-    
-  }
 
+  }
+  openDropdown(open: boolean){
+    if(open){
+      this.dropdownIconSrc = "../assets/ui/up.png";
+    }else {
+      this.dropdownIconSrc = "../assets/ui/down.png";
+    }
+    this.openOption = ! this.openOption;
+  }
 }

@@ -1,28 +1,53 @@
 <div class="content-master">
-
-  <div *ngFor="let item of dataMaster">
-    <section class="example-section">
-      <span class="example-list-section">
-        <mat-checkbox class="example-margin" [checked]="item.selected" [color]="task.color"
-          [indeterminate]="item.indeterminate" (change)="setAll($event.checked, item)">
-          {{item.label}}
-        </mat-checkbox>
-        <button class="btn" (click)="iconDropdown(!item.optionSubLevel, item)"><img [src]="item.iconSrc"></button>
-
-      </span>
-      <span class="example-list-section" [ngStyle]="{display: !item.optionSubLevel? 'none':null}">
-        <ul>
-          <li *ngFor="let subtask of item.subLevel">
-            <!-- <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
-                {{subtask.name}}
-              </mat-checkbox> -->
-            <mat-checkbox [(ngModel)]="subtask.selected" (ngModelChange)="updateAllComplete(subtask, item)">
-              {{subtask.label}}
+  <div class="dropdown">
+    <button class="dropdown-btn" (click)="openDropdown(this.openOption)">
+      <img [src]="dropdownIconSrc" />
+    </button>
+    <span
+      class="dropdown-content"
+      [ngStyle]="{ display: this.openOption ? 'none' : null }"
+    >
+      <div *ngFor="let item of dataMaster">
+        <section class="example-section">
+          <span class="example-list-section">
+            <mat-checkbox
+              class="example-margin"
+              [checked]="item.selected"
+              [color]="task.color"
+              [indeterminate]="item.indeterminate"
+              (change)="setAll($event.checked, item)"
+            >
+              {{ item.label }}
             </mat-checkbox>
-          </li>
-        </ul>
-      </span>
-    </section>
+            <button
+              class="btn"
+              (click)="iconDropdown(!item.optionSubLevel, item)"
+            >
+              <img [src]="item.iconSrc" />
+            </button>
+          </span>
+          <span
+            class="example-list-section"
+            [ngStyle]="{ display: !item.optionSubLevel ? 'none' : null }"
+          >
+            <ul>
+              <li *ngFor="let subtask of item.subLevel">
+                <!-- <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
+                      {{subtask.name}}
+                    </mat-checkbox> -->
+                <mat-checkbox
+                  [(ngModel)]="subtask.selected"
+                  (ngModelChange)="updateAllComplete(subtask, item)"
+                >
+                  {{ subtask.label }}
+                </mat-checkbox>
+              </li>
+            </ul>
+          </span>
+        </section>
+      </div>
+    </span>
+    <!-- <img src="../assets/ui/down.png" />
+    </button> -->
   </div>
-
 </div>
