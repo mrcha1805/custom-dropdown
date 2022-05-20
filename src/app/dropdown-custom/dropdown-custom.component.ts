@@ -804,7 +804,6 @@ export class DropdownCustomComponent implements OnInit {
         }
 
       }
-
     })
   }
   openDropdown(open: boolean){
