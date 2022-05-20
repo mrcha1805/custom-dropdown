@@ -5,6 +5,7 @@ export interface Task {
   completed: boolean;
   color: ThemePalette;
   subtasks?: Task[];
+
 }
 
 export interface Data {
@@ -805,7 +806,6 @@ export class DropdownCustomComponent implements OnInit {
       }
 
     })
-
   }
   openDropdown(open: boolean){
     if(open){
