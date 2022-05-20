@@ -5,6 +5,7 @@ export interface Task {
   completed: boolean;
   color: ThemePalette;
   subtasks?: Task[];
+
 }
 
 export interface Data {
@@ -25,7 +26,7 @@ export interface Data {
   styleUrls: ['./dropdown-custom.component.scss']
 })
 export class DropdownCustomComponent implements OnInit {
-  
+
   task: Task = {
     name: 'Indeterminate',
     completed: false,
@@ -379,7 +380,7 @@ export class DropdownCustomComponent implements OnInit {
 		      "selected": false,
           "label": "Pet",
           "value": "AllFilters.hobbiesInterestsPet"
-          
+
         },
         {
           "member": [
@@ -698,7 +699,7 @@ export class DropdownCustomComponent implements OnInit {
 		      "selected": false,
           "label": "Travel Switzerland",
 		      "value": "AllFilters.travelTravelSwitzerland"
-          
+
         },
         {
           "member": [
@@ -725,7 +726,7 @@ export class DropdownCustomComponent implements OnInit {
 		      "selected": false,
           "label": "Travel - Others",
 		      "value": "AllFilters.travelTravelOthers"
-          
+
         },
         {
           "member": [
@@ -800,11 +801,11 @@ export class DropdownCustomComponent implements OnInit {
         }else {
           element.iconSrc = "../assets/ui/up.png";
         }
-      
+
       }
 
     })
-    
+
   }
 
 }
