@@ -49,7 +49,7 @@ export class DropdownCustomComponent implements OnInit {
       "indeterminate": false,
       "optionSubLevel": false,
       "iconSrc": "../assets/ui/up.png",
-      "label": "Automotive567",
+      "label": "Automotive",
       "value": "AllFilters.automotive",
       "subCount": 6,
       "subLevel": [
@@ -58,7 +58,7 @@ export class DropdownCustomComponent implements OnInit {
             "affinityLevelSub"
           ],
 		      "selected": false,
-          "label": "Auto repair890",
+          "label": "Auto repair",
           "value": "AllFilters.automotiveAutoRepair"
         },
         {
@@ -797,6 +797,9 @@ export class DropdownCustomComponent implements OnInit {
     console.log(this.selectItemAll);
     this.dataMaster.forEach(data=> {
       data.selected = this.selectItemAll;
+      if(this.selectItemAll && data.indeterminate){
+        data.indeterminate = false;
+      }
       if(!this.selectItemAll) {
         data.indeterminate = false;
       }
