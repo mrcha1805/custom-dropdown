@@ -67,3 +67,11 @@ ul {
   // height: 20px;
   // background: #FFFFFF;
 }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #C3EB29 !important;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #C3EB29 ;
+}
