@@ -7,8 +7,8 @@
       Select All
     </mat-checkbox>
     <span class="dropdown-content" [ngStyle]="{ display: this.openOption ? 'none' : null }">
-      <input type="text" placeholder="Search">
-      <div *ngFor="let item of dataMaster">
+      <input type="text" [(ngModel)]="term" placeholder="Search">
+      <div *ngFor="let item of dataMaster| filter: term">
         <section class="example-section">
           <span class="example-list-section">
             <mat-checkbox class="example-margin" [checked]="item.selected" [color]="task.color"
