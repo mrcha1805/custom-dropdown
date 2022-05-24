@@ -1,0 +1,25 @@
+<div class="m-3">
+  <h3>Angular search by filter</h3>
+  <div class="wrap">
+    <div class="search">
+      <input type="text" [(ngModel)]="term" class="searchData" placeholder="What are you looking for?" />
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Label dropdown</th>
+          <th scope="col">Value dropdown </th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let country of members | filter: term">
+          <td>{{ country.label }}</td>
+          <td>{{ country.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

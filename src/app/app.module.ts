@@ -7,16 +7,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UiComponent } from './ui/ui.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { DropdownCustomComponent } from './dropdown-custom/dropdown-custom.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { NestedArrayFilterComponent } from './nested-array-filter/nested-array-filter.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UiComponent,
-    DropdownCustomComponent
+    DropdownCustomComponent,
+    NestedArrayFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,10 @@ import { DropdownCustomComponent } from './dropdown-custom/dropdown-custom.compo
     MatSelectModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatButtonModule
+    FilterPipeModule,
+    MatButtonModule,
+    Ng2SearchPipeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

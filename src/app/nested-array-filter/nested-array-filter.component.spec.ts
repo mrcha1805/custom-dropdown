@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UiComponent } from './ui.component';
+import { NestedArrayFilterComponent } from './nested-array-filter.component';
 
-describe('UiComponent', () => {
-  let component: UiComponent;
-  let fixture: ComponentFixture<UiComponent>;
+describe('NestedArrayFilterComponent', () => {
+  let component: NestedArrayFilterComponent;
+  let fixture: ComponentFixture<NestedArrayFilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UiComponent ]
+      declarations: [ NestedArrayFilterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UiComponent);
+    fixture = TestBed.createComponent(NestedArrayFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
