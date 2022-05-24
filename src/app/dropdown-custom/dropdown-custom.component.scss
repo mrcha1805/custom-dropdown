@@ -1,10 +1,24 @@
-.example-section {
-  margin: 12px 0;
+.content-master{
+  display: block;
+  width: 40%;
+  height: 500vh;
+  margin: 30px;
+  padding: 30px;
+  justify-content: center;
+  align-items:baseline;
+  background: #d3d3ff;
+}
+
+
+.affinity-section {
+  margin: 0;
   width: 80%;
+  
 }
 
 .example-margin {
   margin: 0 12px;
+  background: green;
 }
 
 ul {
@@ -16,34 +30,27 @@ ul {
 
   background: transparent;
   border: none;
-  margin-left: 60px;
+  margin-left: 40px;
   float: right;
   position: relative;
-  top: 16px;
+  top: 0px;
   cursor: pointer;
   img {
     width: 10px;
     height: 8.33px;
   }
+  display: inline;
 
 }
-.example-list-section{
+.affinity-subLevel{
 
   width: 100%;
   height: 20px;
-  background: orange;
+  background: #F2F2F2;
+  display: inline-table;
 }
 
-.content-master{
-  display: block;
-  width: 40%;
-  height: 100vh;
-  margin: 30px;
-  padding: 30px;
-  justify-content: center;
-  align-items:baseline;
-  background: #F2EEE1;
-}
+
 
 .dropdown-btn {
   background: #FFFFFF;
@@ -63,9 +70,14 @@ ul {
 .dropdown-content {
   // position: absolute;
   width: 70%;
-
+  background: #FFFFFF;;
+  display: contents;
   // height: 20px;
-  // background: #FFFFFF;
+  
+}
+.input-search {
+  width: 50%;
+  margin: 10px;
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {

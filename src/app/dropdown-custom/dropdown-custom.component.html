@@ -7,21 +7,20 @@
       Select All
     </mat-checkbox>
     <span class="dropdown-content" [ngStyle]="{ display: this.openOption ? 'none' : null }">
-      <input type="text" [(ngModel)]="term" placeholder="Search">
+      <input type="text" class="input-search" [(ngModel)]="term" placeholder="Search">
       <div *ngFor="let item of dataMaster| filter: term">
-        <section class="example-section">
-          <span class="example-list-section">
-            <mat-checkbox class="example-margin" [checked]="item.selected" [indeterminate]="item.indeterminate"
-              (change)="setAllItem($event.checked, item)">
-              {{ item.label }}
-            </mat-checkbox>
-            <button class="btn" (click)="iconDropdown(!item.optionSubLevel, item)">
-              <img [src]="item.iconSrc" />
-            </button>
-          </span>
-          <span class="example-list-section" [ngStyle]="{ display: !item.optionSubLevel ? 'none' : null }">
+        <section class="affinity-section">
+
+          <mat-checkbox class="example-margin" [checked]="item.selected" [indeterminate]="item.indeterminate"
+            (change)="setAllItem($event.checked, item)">
+            {{ item.label }}
+          </mat-checkbox>
+          <button class="btn" (click)="iconDropdown(!item.optionSubLevel, item)">
+            <img [src]="item.iconSrc" />
+          </button>
+          <span class="affinity-subLevel" [ngStyle]="{ display: !item.optionSubLevel ? 'none' : null }">
             <ul>
-              <li *ngFor="let subtask of item.subLevel">
+              <li *ngFor="let subtask of item.subLevel| filter: term ">
                 <!-- <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
                       {{subtask.name}}
                     </mat-checkbox> -->
