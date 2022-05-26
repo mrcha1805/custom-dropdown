@@ -1,9 +1,9 @@
 <div class="content-master">
   <div class="dropdown">
     <button class="dropdown-btn" (click)="openDropdown(this.openOption)">
-      <img [src]="dropdownIconSrc" />
+      <img [src]="dropdownIconSrc" />{{affinitySelected}}
     </button>
-    <mat-checkbox [(ngModel)]="selectItemAll" (change)="selectAll($event.checked)">
+    <mat-checkbox [(ngModel)]="selectItemAll" (change)="selectAll(selectItemAll)">
       Select All
     </mat-checkbox>
     <span class="dropdown-content" [ngStyle]="{ display: this.openOption ? 'none' : null }">
@@ -20,12 +20,9 @@
           </button>
           <span class="affinity-subLevel" [ngStyle]="{ display: !item.optionSubLevel ? 'none' : null }">
             <ul>
-              <li *ngFor="let subtask of item.subLevel| filter: term ">
-                <!-- <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
-                      {{subtask.name}}
-                    </mat-checkbox> -->
-                <mat-checkbox [(ngModel)]="subtask.selected" (ngModelChange)="updateAllComplete(subtask, item)">
-                  {{ subtask.label }}
+              <li *ngFor="let sub of item.subLevel| filter: term ">
+                <mat-checkbox [(ngModel)]="sub.selected" (ngModelChange)="selectSubLevel(sub, item)">
+                  {{ sub.label }}
                 </mat-checkbox>
               </li>
             </ul>

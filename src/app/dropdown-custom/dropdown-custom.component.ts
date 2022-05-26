@@ -31,25 +31,25 @@ export class DropdownCustomComponent implements OnInit {
   openOption = true;
   selectItemAll = false;
   term = '';
-
+  affinitySelected = '';
   dataMaster: Data[] = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.selectItemAll = false;
+    this.affinitySelected = '';
+    this.selectItemAll = true;
     this.http.get<Data[]>('../assets/data/affinity-data.json')
     .subscribe((data: Data[]) => {
       console.log(data);
       this.dataMaster = data;
     });
+    
   }
 
-  updateAllComplete(task: Data, header: Data) {
-    console.log(task);
+  selectSubLevel(sub: Data, header: Data) {
+    console.log(sub);
     console.log(header);
-    // this.allComplete= task.subLevel != null && task.subLevel.every(t => t.selected);
-
     this.dataMaster.find(element=> {
       if(element.label === header.label) {
         element.selected = false;
@@ -86,6 +86,7 @@ export class DropdownCustomComponent implements OnInit {
 
     })
 
+
   }
   selectAll(event: boolean){
   
@@ -103,6 +104,16 @@ export class DropdownCustomComponent implements OnInit {
       data.subLevel?.forEach(sub=> {
         sub.selected = this.selectItemAll;
       })
+    })
+    
+  }
+
+  displaySelection() {
+    this.dataMaster.forEach(data=> {
+      if(data.selected) {
+        this.affinitySelected.concat(data.label);
+        this.affinitySelected.concat(', ');
+      }
     })
   }
 
